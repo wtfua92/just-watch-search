@@ -1,3 +1,6 @@
+import { SearchItemRawInterface } from "@/utils/types";
+import axios from "axios";
+
 export const requestCacheWrapper = (requestFunc: Function) => {
   const cache = new Map();
 
@@ -22,3 +25,35 @@ export const requestCacheWrapper = (requestFunc: Function) => {
       });
   };
 };
+
+export const searchRequest = async function(
+  searchQuery: string
+): Promise<SearchItemRawInterface[]> {
+  if (!searchQuery) {
+    return Promise.resolve([]);
+  }
+
+  let result: SearchItemRawInterface[] = [];
+
+  try {
+    const {
+      data: { items }
+    } = await axios.get("popular", {
+      params: {
+        body: {
+          pageSize: 5,
+          page: 1,
+          query: searchQuery,
+          contentTypes: ["show", "movie"]
+        }
+      }
+    });
+
+    result = items || [];
+  } catch (e) {
+    console.log(e);
+  }
+  return result;
+};
+
+export const searchRequestWithCaching = requestCacheWrapper(searchRequest);

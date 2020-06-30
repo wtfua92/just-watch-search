@@ -1,14 +1,26 @@
 <template>
   <div class="search-result">
-    <slot></slot>
+    <SearchItem
+      v-for="item in searchResultItems"
+      v-bind="item"
+      :key="item.id"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import SearchItem from "@/components/SearchItem.vue";
+import { mapGetters } from "vuex";
 
 export default Vue.extend({
-  name: "SearchResult"
+  name: "SearchResult",
+  components: {
+    SearchItem
+  },
+  computed: {
+    ...mapGetters(["searchResultItems"])
+  }
 });
 </script>
 

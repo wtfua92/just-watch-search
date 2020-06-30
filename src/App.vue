@@ -1,42 +1,19 @@
 <template>
   <div id="app">
-    <SearchBar @userInput="userInputHandler" />
-    <SearchResult v-if="searchResult.length > 0">
-      <SearchItem v-for="item in searchResult" v-bind="item" :key="item.id" />
-    </SearchResult>
+    <SearchBar />
+    <SearchResult />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import SearchBar from "./components/SearchBar.vue";
-import SearchItem from "./components/SearchItem.vue";
 import SearchResult from "@/components/SearchResult.vue";
 
-import { SearchItemInterface, SearchItemRawInterface } from "@/utils/types";
-
 export default Vue.extend({
-  data() {
-    return {
-      itemsHidden: true,
-      searchResult: [] as SearchItemInterface[]
-    };
-  },
-  methods: {
-    userInputHandler(data: SearchItemRawInterface[]): void {
-      this.searchResult = data.map(s => ({
-        id: s.id,
-        title: s.title,
-        poster: s.poster,
-        year: s.original_release_year,
-        type: s.object_type
-      }));
-    }
-  },
   name: "App",
   components: {
     SearchBar,
-    SearchItem,
     SearchResult
   }
 });

@@ -13,3 +13,7 @@ export interface SearchItemRawInterface {
   original_release_year: number;
   object_type: string;
 }
+
+export type SearchResultStateInterface = {
+  searchResult: SearchItemInterface[];
+};

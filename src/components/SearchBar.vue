@@ -18,6 +18,9 @@ import axios from "axios";
 import debounce from "lodash/debounce";
 import { SearchItemRawInterface } from "@/utils/types";
 import { requestCacheWrapper } from "@/utils/helpers";
+import { mapActions } from "vuex";
+import { SearchResultMutations } from "@/store/modules/search-result/mutations";
+import { SearchResultActions } from "@/store/modules/search-result/actions";
 
 const searchRequest = function(
   searchQuery: string
@@ -57,17 +60,24 @@ export default Vue.extend({
     };
   },
   methods: {
+    ...mapActions([SearchResultActions.SET_SEARCH_RESULT]),
     inputHandler: function() {
-      return debounce(async (): Promise<void> => {
-        this.touched = true;
-        window.scrollTo({
-          top: 0
-        });
+      return debounce(
+        async (): Promise<void> => {
+          this.touched = true;
+          window.scrollTo({
+            top: 0
+          });
 
-        const items = (await searchRequestWithCache(this.titleName)) || [];
-
-        this.$emit("userInput", items);
-      }, 750)();
+          const items = (await searchRequestWithCache(this.titleName)) || [];
+          this.setSearchResult(items);
+        },
+        750,
+        {
+          leading: false,
+          trailing: true
+        }
+      )();
     }
   }
 });

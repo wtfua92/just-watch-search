@@ -15,23 +15,38 @@
 <script lang="ts">
 import Vue from "vue";
 import axios from "axios";
-// import debounce from "lodash/debounce";
+import debounce from "lodash/debounce";
 import { SearchItemRawInterface } from "@/utils/types";
+import { requestCacheWrapper } from "@/utils/helpers";
 
-const request = function(
+const searchRequest = function(
   searchQuery: string
 ): Promise<SearchItemRawInterface[]> {
+  if (!searchQuery) {
+    return Promise.resolve([]);
+  }
+
   return axios
-    .get(
-      `popular?body={"page_size":5,"page":1,"query":"${searchQuery}","content_types":["show","movie"]}`
-    )
+    .get(`popular`, {
+      params: {
+        body: {
+          pageSize: 5,
+          page: 1,
+          query: searchQuery,
+          contentTypes: ["show", "movie"]
+        }
+      }
+    })
     .then(({ data: { items = [] } }) => {
       return items;
     })
-    .catch(() => {
+    .catch((e: Error) => {
+      console.log(e);
       return [];
     });
 };
+
+const searchRequestWithCache = requestCacheWrapper(searchRequest);
 
 export default Vue.extend({
   name: "SearchBar",
@@ -42,16 +57,17 @@ export default Vue.extend({
     };
   },
   methods: {
-    inputHandler: async function(): Promise<void> {
-      this.touched = true;
-      // body={"page_size":5,"page":1,"query":"Ozar","content_types":["show","movie"]}
-      window.scrollTo({
-        top: 0
-      });
+    inputHandler: function() {
+      return debounce(async (): Promise<void> => {
+        this.touched = true;
+        window.scrollTo({
+          top: 0
+        });
 
-      const items = (await request(this.titleName)) || [];
+        const items = (await searchRequestWithCache(this.titleName)) || [];
 
-      this.$emit("userInput", items);
+        this.$emit("userInput", items);
+      }, 500)();
     }
   }
 });

@@ -14,42 +14,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import axios from "axios";
 import debounce from "lodash/debounce";
-import { SearchItemRawInterface } from "@/utils/types";
-import { requestCacheWrapper } from "@/utils/helpers";
 import { mapActions } from "vuex";
-import { SearchResultMutations } from "@/store/modules/search-result/mutations";
 import { SearchResultActions } from "@/store/modules/search-result/actions";
-
-const searchRequest = function(
-  searchQuery: string
-): Promise<SearchItemRawInterface[]> {
-  if (!searchQuery) {
-    return Promise.resolve([]);
-  }
-
-  return axios
-    .get(`popular`, {
-      params: {
-        body: {
-          pageSize: 5,
-          page: 1,
-          query: searchQuery,
-          contentTypes: ["show", "movie"]
-        }
-      }
-    })
-    .then(({ data: { items = [] } }) => {
-      return items;
-    })
-    .catch((e: Error) => {
-      console.log(e);
-      return [];
-    });
-};
-
-const searchRequestWithCache = requestCacheWrapper(searchRequest);
 
 export default Vue.extend({
   name: "SearchBar",
@@ -69,8 +36,7 @@ export default Vue.extend({
             top: 0
           });
 
-          const items = (await searchRequestWithCache(this.titleName)) || [];
-          this.setSearchResult(items);
+          this.setSearchResult(this.titleName);
         },
         750,
         {

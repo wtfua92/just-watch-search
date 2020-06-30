@@ -41,6 +41,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 @import "src/styles/colors";
+@import "src/styles/utils";
 
 .search-result__item {
   display: flex;
@@ -55,6 +56,27 @@ export default Vue.extend({
   border-radius: 1rem;
   color: $font;
 
+  @include screen-sm {
+    flex-basis: 48%;
+  }
+
+  @include screen-md {
+    flex-basis: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 25rem;
+    background-position: 100% 100%;
+    background-color: $details;
+  }
+
+  @include screen-lg {
+    flex-basis: 48%;
+  }
+
+  @include screen-xl {
+    height: 35rem;
+  }
+
   &__details {
     height: 30%;
     padding: 1.5rem;
@@ -64,6 +86,7 @@ export default Vue.extend({
 
   &__title {
     font-size: 2rem;
+    color: #fff;
   }
 
   &__year {

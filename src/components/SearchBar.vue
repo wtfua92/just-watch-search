@@ -67,7 +67,7 @@ export default Vue.extend({
         const items = (await searchRequestWithCache(this.titleName)) || [];
 
         this.$emit("userInput", items);
-      }, 500)();
+      }, 750)();
     }
   }
 });
@@ -76,6 +76,12 @@ export default Vue.extend({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "src/styles/colors";
+@import "src/styles/utils";
+
+@mixin input-size($size) {
+  line-height: $size;
+  font-size: $size;
+}
 
 .search-bar {
   display: flex;
@@ -106,6 +112,14 @@ export default Vue.extend({
     color: $font;
     border-bottom: 2px solid $font;
     text-align: center;
+
+    @include screen-sm {
+      @include input-size(10rem);
+    }
+
+    @include screen-xl {
+      @include input-size(12rem);
+    }
   }
 }
 </style>

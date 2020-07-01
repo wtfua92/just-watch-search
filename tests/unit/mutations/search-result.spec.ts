@@ -1,7 +1,7 @@
 import mutations, {
   SearchResultMutations
 } from "@/store/modules/search-result/mutations";
-import { searchResultItems, searchItem } from "../../mocks-data";
+import { searchResultItems, searchItem } from "../../mocks";
 
 import { SearchResultStateInterface } from "@/utils/types";
 

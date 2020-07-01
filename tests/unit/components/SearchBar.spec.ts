@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/vue";
 import SearchBar from "@/components/SearchBar.vue";
 import { SearchResultActions } from "@/store/modules/search-result/actions";
-import { searchQuery as SEARCH_QUERY } from "../../mocks-data";
+import { searchQuery as SEARCH_QUERY } from "../../mocks";
 
 const PLACEHOLDER = "Find your show";
 

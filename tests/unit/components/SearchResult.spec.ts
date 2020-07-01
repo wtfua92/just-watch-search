@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/vue";
 import SearchResult from "@/components/SearchResult.vue";
 import { SearchItemInterface } from "@/utils/types";
-import { searchItem, searchResultItems } from "../../mocks-data";
+import { searchItem, searchResultItems } from "../../mocks";
 
 const renderSearchResult = (
   searchItems: SearchItemInterface[],

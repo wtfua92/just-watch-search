@@ -4,7 +4,7 @@ import actions, {
 import { ActionContext } from "vuex";
 import { SearchResultStateInterface } from "@/utils/types";
 import { SearchResultMutations } from "@/store/modules/search-result/mutations";
-import { searchQuery, searchResultItemsRaw } from "../../mocks-data";
+import { searchQuery, searchResultItemsRaw } from "../../mocks";
 import { searchRequestWithCaching } from "@/utils/helpers";
 import Mock = jest.Mock;
 

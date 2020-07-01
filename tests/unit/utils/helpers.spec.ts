@@ -5,7 +5,7 @@ import {
 } from "@/utils/helpers";
 import axios from "axios";
 import Mock = jest.Mock;
-import { searchQuery } from "../../mocks-data";
+import { searchQuery } from "../../mocks";
 
 jest.mock("axios");
 

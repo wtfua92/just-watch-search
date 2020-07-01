@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/vue";
 import Badge from "@/components/Badge.vue";
-import { searchQuery } from "../../mocks-data";
+import { searchQuery } from "../../mocks";
 
 describe("Badge", () => {
   let props: {

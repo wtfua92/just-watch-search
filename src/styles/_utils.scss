@@ -19,3 +19,8 @@
 @mixin screen-xl {
   @media (min-width: 1800px) { @content; }
 }
+
+@mixin input-size($size) {
+  line-height: $size;
+  font-size: $size;
+}

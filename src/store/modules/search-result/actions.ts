@@ -31,7 +31,8 @@ const setSearchResult = async (
   const newItems: SearchItemInterface[] = items.map(item => ({
     ...item,
     type: item.object_type,
-    year: item.original_release_year
+    year: item.original_release_year,
+    rating: item.tmdb_popularity
   }));
 
   context.commit(SearchResultMutations.SET_SEARCH_RESULT, newItems);

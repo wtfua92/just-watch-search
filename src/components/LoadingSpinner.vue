@@ -60,7 +60,7 @@ export default {
   content: "";
 }
 .loader:after {
-  background: $details;
+  background: $dark-100;
   width: 75%;
   height: 75%;
   border-radius: 50%;

@@ -4,7 +4,23 @@
     :style="{ backgroundImage: `url(${imageUrl})` }"
   >
     <div class="search-result__item__details">
-      <p class="search-result__item__title">{{ title }} ({{ type }})</p>
+      <div class="search-result__item__title">
+        <span>{{ title }}</span>
+        <div class="search-result__item__badges">
+          <Badge
+            :class="
+              `search-result__item__type search-result__item__type--${type}`
+            "
+            :content="type"
+            title="Item type"
+          />
+          <Badge
+            class="search-result__item__rating"
+            :content="roundedRating"
+            title="TMDB Popularity Rating"
+          />
+        </div>
+      </div>
       <p class="search-result__item__year">{{ year }}</p>
     </div>
   </div>
@@ -13,9 +29,21 @@
 <script lang="ts">
 import Vue from "vue";
 import { IMAGE_DATA } from "@/utils/constants.ts";
+import Badge from "@/components/Badge.vue";
 
 export default Vue.extend({
   name: "SearchItem",
+  computed: {
+    imageUrl(): string {
+      return `${IMAGE_DATA.IMAGE_URL}${this.poster.replace(
+        "{profile}",
+        IMAGE_DATA.IMAGE_PROFILE
+      )}`;
+    },
+    roundedRating(): string {
+      return this.rating.toFixed(1);
+    }
+  },
   props: {
     title: {
       type: String,
@@ -26,15 +54,11 @@ export default Vue.extend({
       required: true
     },
     type: String,
-    year: Number
+    year: Number,
+    rating: Number
   },
-  computed: {
-    imageUrl: function(): string {
-      return `${IMAGE_DATA.IMAGE_URL}${this.poster.replace(
-        "{profile}",
-        IMAGE_DATA.IMAGE_PROFILE
-      )}`;
-    }
+  components: {
+    Badge
   }
 });
 </script>
@@ -54,7 +78,7 @@ export default Vue.extend({
   background-position: 50% 50%;
   background-repeat: no-repeat;
   border-radius: 1rem;
-  color: $font;
+  color: $grey-100;
 
   @include screen-sm {
     flex-basis: 48%;
@@ -66,7 +90,7 @@ export default Vue.extend({
     justify-content: flex-start;
     height: 25rem;
     background-position: 100% 100%;
-    background-color: $details;
+    background-color: $dark-100;
     background-size: auto 100%;
   }
 
@@ -80,18 +104,59 @@ export default Vue.extend({
 
   &__details {
     height: 30%;
+    background-color: $dark-100;
+    width: 100%;
     padding: 1.5rem;
-    background-color: rgba($details, 0.95);
     border-radius: 0.5rem 0.5rem 1rem 1rem;
+
+    @include screen-md {
+      background-color: transparent;
+      height: auto;
+    }
   }
 
   &__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     font-size: 2rem;
-    color: #fff;
+    line-height: 3.5rem;
+    color: $white;
+    margin-bottom: 0.5rem;
+
+    & > span {
+      padding-right: 1rem;
+    }
+
+    @include screen-sm {
+      font-size: 2.5rem;
+    }
+
+    @include screen-xl {
+      font-size: 3.5rem;
+    }
   }
 
   &__year {
     font-size: 1.25rem;
+
+    @include screen-sm {
+      font-size: 1.5rem;
+    }
+
+    @include screen-xl {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__rating.badge {
+    border: 1px solid $yellow-100;
+    color: $yellow-100;
+  }
+
+  &__type.badge {
+    border: 1px solid $grey-100;
+    color: $white;
   }
 }
 </style>

@@ -35,7 +35,7 @@ html {
   position: relative;
   min-height: 100%;
   height: 100%;
-  background-color: $background;
+  background-color: $dark-200;
   font-size: 10px;
 }
 
@@ -49,7 +49,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100%;
-  background-color: $background;
+  background-color: $dark-200;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,6 +61,6 @@ body {
 .search-result--fallback {
   display: flex;
   font-size: 10rem;
-  color: $details;
+  color: $dark-100;
 }
 </style>

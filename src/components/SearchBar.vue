@@ -71,17 +71,12 @@ export default Vue.extend({
 @import "src/styles/colors";
 @import "src/styles/utils";
 
-@mixin input-size($size) {
-  line-height: $size;
-  font-size: $size;
-}
-
 .search-bar {
   display: flex;
   justify-content: center;
   width: 100%;
   margin-top: -5rem;
-  background-color: $background;
+  background-color: $dark-200;
   top: 0;
 
   @include screen-md {
@@ -105,11 +100,11 @@ export default Vue.extend({
     line-height: 5rem;
     font-size: 5rem;
     padding: 1rem 0.5rem;
-    background-color: $background;
+    background-color: $dark-200;
     border: 0;
     outline: none;
-    color: $font;
-    border-bottom: 2px solid $font;
+    color: $grey-100;
+    border-bottom: 2px solid $grey-100;
     text-align: center;
 
     &::placeholder {

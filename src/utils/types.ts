@@ -4,6 +4,7 @@ export interface SearchItemInterface {
   poster: string;
   year: number;
   type: string;
+  rating: number;
 }
 
 export interface SearchItemRawInterface {
@@ -12,6 +13,7 @@ export interface SearchItemRawInterface {
   poster: string;
   original_release_year: number;
   object_type: string;
+  tmdb_popularity: number;
 }
 
 export type SearchResultStateInterface = {

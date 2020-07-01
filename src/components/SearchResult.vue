@@ -1,6 +1,8 @@
 <template>
   <div class="search-result">
+    <LoadingSpinner v-if="isLoading" />
     <SearchItem
+      v-else
       v-for="item in searchResultItems"
       v-bind="item"
       :key="item.id"
@@ -11,15 +13,17 @@
 <script lang="ts">
 import Vue from "vue";
 import SearchItem from "@/components/SearchItem.vue";
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import { mapGetters } from "vuex";
 
 export default Vue.extend({
   name: "SearchResult",
   components: {
-    SearchItem
+    SearchItem,
+    LoadingSpinner
   },
   computed: {
-    ...mapGetters(["searchResultItems"])
+    ...mapGetters(["searchResultItems", "isLoading"])
   }
 });
 </script>
@@ -38,9 +42,6 @@ export default Vue.extend({
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-  }
-
-  @include screen-md {
     margin-top: 18rem;
   }
 }

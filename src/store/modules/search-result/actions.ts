@@ -9,7 +9,8 @@ import { SearchResultMutations } from "@/store/modules/search-result/mutations";
 import { searchRequestWithCaching } from "@/utils/helpers";
 
 export enum SearchResultActions {
-  SET_SEARCH_RESULT = "setSearchResult"
+  SET_SEARCH_RESULT = "setSearchResult",
+  SET_LOADING = "setLoading"
 }
 
 const setSearchResult = async (
@@ -20,6 +21,8 @@ const setSearchResult = async (
   searchQuery: string
 ): Promise<void> => {
   let items: SearchItemRawInterface[] = [];
+  await context.dispatch(SearchResultActions.SET_LOADING);
+  context.commit(SearchResultMutations.SET_SEARCH_RESULT, []);
 
   try {
     items = await searchRequestWithCaching(searchQuery);
@@ -34,8 +37,16 @@ const setSearchResult = async (
   }));
 
   context.commit(SearchResultMutations.SET_SEARCH_RESULT, newItems);
+  await context.dispatch(SearchResultActions.SET_LOADING);
+};
+
+const setLoading = (
+  context: ActionContext<SearchResultStateInterface, SearchResultStateInterface>
+) => {
+  context.commit(SearchResultMutations.SET_LOADING);
 };
 
 export default {
-  [SearchResultActions.SET_SEARCH_RESULT]: setSearchResult
+  [SearchResultActions.SET_SEARCH_RESULT]: setSearchResult,
+  [SearchResultActions.SET_LOADING]: setLoading
 } as ActionTree<SearchResultStateInterface, SearchResultStateInterface>;

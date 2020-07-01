@@ -50,7 +50,7 @@ export default Vue.extend({
   height: 50rem;
   margin-bottom: 5rem;
   max-width: 100%;
-  background-size: auto 100%;
+  background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   border-radius: 1rem;
@@ -67,6 +67,7 @@ export default Vue.extend({
     height: 25rem;
     background-position: 100% 100%;
     background-color: $details;
+    background-size: auto 100%;
   }
 
   @include screen-lg {

@@ -5,7 +5,8 @@ import mutations from "@/store/modules/search-result/mutations";
 import { SearchResultStateInterface } from "@/utils/types";
 
 const state: SearchResultStateInterface = {
-  searchResult: []
+  searchResult: [],
+  loading: false
 };
 
 export default {

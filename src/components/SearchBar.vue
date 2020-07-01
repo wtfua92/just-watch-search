@@ -5,8 +5,9 @@
       id="search-bar"
       type="text"
       class="search-bar__input"
-      v-model="titleName"
       autofocus
+      :placeholder="!touched && 'Find your show'"
+      v-model="titleName"
       @input="inputHandler"
     />
   </div>
@@ -30,7 +31,7 @@ export default Vue.extend({
     ...mapActions([SearchResultActions.SET_SEARCH_RESULT]),
     inputHandler: function() {
       return debounce(
-        async (): Promise<void> => {
+        (): void => {
           this.touched = true;
           window.scrollTo({
             top: 0
@@ -65,12 +66,18 @@ export default Vue.extend({
   width: 100%;
   margin-top: -5rem;
   background-color: $background;
+  top: 0;
+
+  @include screen-md {
+    margin-top: -10rem;
+  }
 
   &--touched {
     position: fixed;
     top: 0;
     margin-top: 0;
     padding: 0 0 2rem;
+    transition: top 1s ease-out;
   }
 
   &__label {
@@ -88,6 +95,18 @@ export default Vue.extend({
     color: $font;
     border-bottom: 2px solid $font;
     text-align: center;
+
+    &::placeholder {
+      @include input-size(4rem);
+
+      @include screen-sm {
+        @include input-size(8rem);
+      }
+
+      @include screen-xl {
+        @include input-size(10rem);
+      }
+    }
 
     @include screen-sm {
       @include input-size(10rem);

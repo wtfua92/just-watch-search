@@ -6,6 +6,12 @@ const searchResultItems: Getter<
   SearchResultStateInterface
 > = state => state.searchResult;
 
+const isLoading: Getter<
+  SearchResultStateInterface,
+  SearchResultStateInterface
+> = state => state.loading;
+
 export default {
-  searchResultItems
+  searchResultItems,
+  isLoading
 };

@@ -16,7 +16,7 @@
 <script lang="ts">
 import Vue from "vue";
 import debounce from "lodash/debounce";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { SearchResultActions } from "@/store/modules/search-result/actions";
 
 export default Vue.extend({
@@ -27,17 +27,33 @@ export default Vue.extend({
       touched: false
     };
   },
+  computed: {
+    ...mapGetters(["isLoading"]),
+    titleNameEmpty: function(): boolean {
+      return this.titleName.length === 0;
+    }
+  },
   methods: {
-    ...mapActions([SearchResultActions.SET_SEARCH_RESULT]),
+    ...mapActions([
+      SearchResultActions.SET_SEARCH_RESULT,
+      SearchResultActions.SET_LOADING
+    ]),
     inputHandler: function() {
+      if (!this.touched) {
+        this.touched = true;
+      }
+
+      !this.isLoading && !this.titleNameEmpty && this.setLoading(true);
+
       return debounce(
         (): void => {
-          this.touched = true;
           window.scrollTo({
             top: 0
           });
 
-          this.setSearchResult(this.titleName);
+          if (!this.titleNameEmpty) {
+            this.setSearchResult(this.titleName);
+          }
         },
         750,
         {

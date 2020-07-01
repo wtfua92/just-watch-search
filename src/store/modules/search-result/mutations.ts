@@ -13,8 +13,11 @@ const setSearchResult: Mutation<SearchResultStateInterface> = (
   state.searchResult = payload;
 };
 
-const setLoading: Mutation<SearchResultStateInterface> = state => {
-  state.loading = !state.loading;
+const setLoading: Mutation<SearchResultStateInterface> = (
+  state: SearchResultStateInterface,
+  payload: boolean
+) => {
+  state.loading = payload;
 };
 
 export default {

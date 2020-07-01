@@ -21,8 +21,6 @@ const setSearchResult = async (
   searchQuery: string
 ): Promise<void> => {
   let items: SearchItemRawInterface[] = [];
-  await context.dispatch(SearchResultActions.SET_LOADING);
-  context.commit(SearchResultMutations.SET_SEARCH_RESULT, []);
 
   try {
     items = await searchRequestWithCaching(searchQuery);
@@ -37,13 +35,18 @@ const setSearchResult = async (
   }));
 
   context.commit(SearchResultMutations.SET_SEARCH_RESULT, newItems);
-  await context.dispatch(SearchResultActions.SET_LOADING);
+  context.state.loading &&
+    (await context.dispatch(SearchResultActions.SET_LOADING, false));
 };
 
 const setLoading = (
-  context: ActionContext<SearchResultStateInterface, SearchResultStateInterface>
+  context: ActionContext<
+    SearchResultStateInterface,
+    SearchResultStateInterface
+  >,
+  newLoadingState: boolean
 ) => {
-  context.commit(SearchResultMutations.SET_LOADING);
+  context.commit(SearchResultMutations.SET_LOADING, newLoadingState);
 };
 
 export default {

@@ -1,7 +1,7 @@
 import { render, screen, ComponentHarness } from "@testing-library/vue";
 
 import SearchItem from "@/components/SearchItem.vue";
-import { searchItem } from "../../mocks";
+import { searchItem } from "../../mocks-data";
 
 import { SearchItemInterface } from "@/utils/types";
 

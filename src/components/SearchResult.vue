@@ -42,7 +42,7 @@ export default Vue.extend({
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 18rem;
+    margin-top: 15rem;
   }
 }
 </style>

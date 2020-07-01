@@ -53,6 +53,10 @@ body {
   justify-content: center;
   padding: 0 5%;
   position: relative;
+
+  @include screen-xl {
+    padding: 0 10%;
+  }
 }
 
 .search-result--fallback {

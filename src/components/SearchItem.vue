@@ -69,7 +69,7 @@ export default Vue.extend({
   flex-direction: column;
   justify-content: flex-end;
   height: 50rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   max-width: 100%;
   background-size: cover;
   background-position: 50% 50%;
@@ -85,7 +85,7 @@ export default Vue.extend({
     flex-basis: 100%;
     flex-direction: row;
     justify-content: flex-start;
-    height: 25rem;
+    height: 20rem;
     background-position: 100% 100%;
     background-color: $dark-100;
     background-size: auto 100%;
@@ -95,20 +95,20 @@ export default Vue.extend({
     flex-basis: 48%;
   }
 
-  @include screen-xl {
-    height: 35rem;
-  }
-
   &__details {
     height: 30%;
+    width: 70%;
     background-color: $dark-100;
-    width: 100%;
-    padding: 3rem 2rem;
+    padding: 1rem;
     border-radius: 0.5rem 0.5rem 1rem 1rem;
 
     @include screen-md {
       background-color: transparent;
       height: auto;
+    }
+
+    @include screen-lg {
+      padding: 2rem;
     }
   }
 
@@ -129,8 +129,8 @@ export default Vue.extend({
       font-size: 2.5rem;
     }
 
-    @include screen-xl {
-      font-size: 3.5rem;
+    @include screen-lg {
+      font-size: 2.75rem;
     }
   }
 
@@ -141,8 +141,8 @@ export default Vue.extend({
       font-size: 1.5rem;
     }
 
-    @include screen-xl {
-      font-size: 2.5rem;
+    @include screen-lg {
+      font-size: 2rem;
     }
   }
 

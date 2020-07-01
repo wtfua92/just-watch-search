@@ -114,17 +114,13 @@ export default Vue.extend({
         @include input-size(8rem);
       }
 
-      @include screen-xl {
+      @include screen-lg {
         @include input-size(10rem);
       }
     }
 
     @include screen-sm {
-      @include input-size(10rem);
-    }
-
-    @include screen-xl {
-      @include input-size(12rem);
+      @include input-size(7rem);
     }
   }
 }

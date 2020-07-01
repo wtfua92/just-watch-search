@@ -4,6 +4,7 @@
 
 <script>
 import Vue from "vue";
+
 export default Vue.extend({
   name: "Badge",
   props: {
@@ -28,10 +29,8 @@ export default Vue.extend({
     font-size: 1.75rem;
   }
 
-  @include screen-xl {
-    padding: 1rem;
-    font-size: 3rem;
-    margin-right: 2rem;
+  @include screen-lg {
+    margin-right: 1.5rem;
   }
 }
 </style>

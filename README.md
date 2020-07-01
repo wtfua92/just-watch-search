@@ -1,4 +1,4 @@
-# just-watch-search
+# Just Watch Search (test project)
 
 ## Project setup
 ```

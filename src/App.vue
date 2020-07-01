@@ -2,7 +2,6 @@
   <div id="app">
     <SearchBar />
     <SearchResult v-if="searchResultItems.length > 0" />
-    <!--    <SearchResultFallback v-else />-->
   </div>
 </template>
 
@@ -10,7 +9,6 @@
 import Vue from "vue";
 import SearchBar from "./components/SearchBar.vue";
 import SearchResult from "@/components/SearchResult.vue";
-// import SearchResultFallback from "@/components/SearchResultFallback.vue";
 import { mapGetters } from "vuex";
 
 export default Vue.extend({
@@ -21,7 +19,6 @@ export default Vue.extend({
   components: {
     SearchBar,
     SearchResult
-    // SearchResultFallback
   }
 });
 </script>

@@ -17,6 +17,6 @@ export interface SearchItemRawInterface {
 }
 
 export type SearchResultStateInterface = {
-  searchResult: SearchItemInterface[];
+  searchResultItems: SearchItemInterface[];
   loading: boolean;
 };

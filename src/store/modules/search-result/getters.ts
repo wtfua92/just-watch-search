@@ -4,7 +4,7 @@ import { SearchResultStateInterface } from "@/utils/types";
 const searchResultItems: Getter<
   SearchResultStateInterface,
   SearchResultStateInterface
-> = state => state.searchResult;
+> = state => state.searchResultItems;
 
 const isLoading: Getter<
   SearchResultStateInterface,

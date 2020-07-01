@@ -1,5 +1,5 @@
 <template>
-  <span class="badge" :title="title" v-html="content" />
+  <span v-if="content" class="badge" :title="title" v-html="content" />
 </template>
 
 <script>
@@ -7,7 +7,6 @@ import Vue from "vue";
 export default Vue.extend({
   name: "Badge",
   props: {
-    classNames: String,
     title: String,
     content: String || Number
   }

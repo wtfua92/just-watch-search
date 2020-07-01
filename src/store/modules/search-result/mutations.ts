@@ -10,7 +10,7 @@ const setSearchResult: Mutation<SearchResultStateInterface> = (
   state: SearchResultStateInterface,
   payload: SearchItemInterface[]
 ): void => {
-  state.searchResult = payload;
+  state.searchResultItems = payload;
 };
 
 const setLoading: Mutation<SearchResultStateInterface> = (
@@ -20,7 +20,11 @@ const setLoading: Mutation<SearchResultStateInterface> = (
   state.loading = payload;
 };
 
+export type SearchResultMutationsTree = MutationTree<
+  SearchResultStateInterface & SearchResultMutations
+>;
+
 export default {
   [SearchResultMutations.SET_SEARCH_RESULT]: setSearchResult,
   [SearchResultMutations.SET_LOADING]: setLoading
-} as MutationTree<SearchResultStateInterface & SearchResultMutations>;
+} as SearchResultMutationsTree;

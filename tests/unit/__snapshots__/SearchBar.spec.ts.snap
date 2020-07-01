@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar should match the snapshot 1`] = `
+<div>
+  <div
+    class="search-bar search-bar--touched"
+  >
+    <label
+      class="search-bar__label"
+      for="search-bar"
+    >
+      Search:
+    </label>
+     
+    <input
+      autofocus="autofocus"
+      class="search-bar__input"
+      id="search-bar"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`SearchBar should match the snapshot 2`] = `<div />`;

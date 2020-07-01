@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResult should display all search items 1`] = `
+<body>
+  <div>
+    <div
+      class="search-result"
+    >
+      <div
+        class="search-result__item"
+        id="1"
+        style="background-image: url(https://images.justwatch.com/POSTER.jpg);"
+      >
+        <div
+          class="search-result__item__details"
+        >
+          <div
+            class="search-result__item__title"
+          >
+            <span>
+              Ozark
+            </span>
+             
+            <div
+              class="search-result__item__badges"
+            >
+              <span
+                class="badge search-result__item__type search-result__item__type--show"
+                title="Item type"
+              >
+                show
+              </span>
+               
+              <span
+                class="badge search-result__item__rating"
+                title="TMDB Popularity Rating"
+              >
+                100.2 ★
+              </span>
+            </div>
+          </div>
+           
+          <p
+            class="search-result__item__year"
+          >
+            2017
+          </p>
+        </div>
+      </div>
+      <div
+        class="search-result__item"
+        id="2"
+        style="background-image: url(https://images.justwatch.com/POSTER.jpg);"
+      >
+        <div
+          class="search-result__item__details"
+        >
+          <div
+            class="search-result__item__title"
+          >
+            <span>
+              Ozark
+            </span>
+             
+            <div
+              class="search-result__item__badges"
+            >
+              <span
+                class="badge search-result__item__type search-result__item__type--show"
+                title="Item type"
+              >
+                show
+              </span>
+               
+              <span
+                class="badge search-result__item__rating"
+                title="TMDB Popularity Rating"
+              >
+                100.2 ★
+              </span>
+            </div>
+          </div>
+           
+          <p
+            class="search-result__item__year"
+          >
+            2017
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`SearchResult should display loading spinner if isLoading=true 1`] = `
+<body>
+  <div>
+    <div
+      class="search-result"
+    >
+      <div
+        class="loader"
+      >
+        
+  Loading...
+
+      </div>
+    </div>
+  </div>
+</body>
+`;

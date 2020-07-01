@@ -31,6 +31,7 @@ describe("SearchBar", () => {
 
   afterEach(() => {
     window = oldWindow;
+    jest.resetAllMocks();
   });
 
   it("should render", () => {
@@ -93,6 +94,17 @@ describe("SearchBar", () => {
 
     await waitFor(() => {
       expect(window.scrollTo).toHaveBeenCalledWith({ top: 0 });
+    });
+  });
+
+  it("should match the snapshot", async () => {
+    const { container } = renderSearchBar();
+    const searchBar = screen.getByPlaceholderText(PLACEHOLDER);
+
+    await fireEvent.input(searchBar, { target: { value: SEARCH_QUERY } });
+
+    await waitFor(() => {
+      expect(container).toMatchSnapshot();
     });
   });
 });

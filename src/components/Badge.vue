@@ -8,7 +8,7 @@ export default Vue.extend({
   name: "Badge",
   props: {
     title: String,
-    content: String || Number
+    content: String
   }
 });
 </script>

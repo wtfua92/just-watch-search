@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge should render a badge 1`] = `
+<span
+  class="badge"
+  title="Ozark"
+>
+  show
+</span>
+`;
+
+exports[`Badge should render a badge with HTML content 1`] = `
+<span
+  class="badge"
+  title="Ozark"
+>
+  <i
+    data-testid="test-id"
+  >
+    Test
+  </i>
+</span>
+`;

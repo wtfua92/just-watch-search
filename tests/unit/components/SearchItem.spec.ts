@@ -1,6 +1,8 @@
 import { render, screen, ComponentHarness } from "@testing-library/vue";
 
 import SearchItem from "@/components/SearchItem.vue";
+import { searchItem } from "../../mocks";
+
 import { SearchItemInterface } from "@/utils/types";
 
 // @ts-ignore
@@ -14,14 +16,7 @@ describe("SearchItem", () => {
   let component: ComponentHarness;
 
   beforeEach(() => {
-    props = {
-      id: 123,
-      title: "Ozark",
-      poster: "/POSTER.jpg",
-      type: "show",
-      year: 2017,
-      rating: 100.234
-    };
+    props = searchItem;
 
     component = renderSearchItem(props);
   });

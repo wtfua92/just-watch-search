@@ -29,13 +29,15 @@ const setSearchResult = async (
   }
 
   const newItems: SearchItemInterface[] = items.map(item => ({
-    ...item,
+    title: item.title,
+    poster: item.poster,
+    id: item.id,
     type: item.object_type,
     year: item.original_release_year,
     rating: item.tmdb_popularity
   }));
 
-  context.commit(SearchResultMutations.SET_SEARCH_RESULT, newItems);
+  await context.commit(SearchResultMutations.SET_SEARCH_RESULT, newItems);
   context.state.loading &&
     (await context.dispatch(SearchResultActions.SET_LOADING, false));
 };

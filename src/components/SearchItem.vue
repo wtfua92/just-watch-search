@@ -7,13 +7,7 @@
       <div class="search-result__item__title">
         <span>{{ title }}</span>
         <div class="search-result__item__badges">
-          <Badge
-            :class="
-              `search-result__item__type search-result__item__type--${type}`
-            "
-            :content="type"
-            title="Item type"
-          />
+          <Badge :class="typeBadgeClass" :content="type" title="Item type" />
           <Badge
             class="search-result__item__rating"
             :content="roundedRating"
@@ -41,7 +35,10 @@ export default Vue.extend({
       )}`;
     },
     roundedRating(): string {
-      return this.rating.toFixed(1);
+      return `${this.rating.toFixed(1)} &#9733;`;
+    },
+    typeBadgeClass(): string {
+      return `search-result__item__type search-result__item__type--${this.type}`;
     }
   },
   props: {
@@ -106,7 +103,7 @@ export default Vue.extend({
     height: 30%;
     background-color: $dark-100;
     width: 100%;
-    padding: 1.5rem;
+    padding: 3rem 2rem;
     border-radius: 0.5rem 0.5rem 1rem 1rem;
 
     @include screen-md {
@@ -122,7 +119,7 @@ export default Vue.extend({
     font-size: 2rem;
     line-height: 3.5rem;
     color: $white;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 
     & > span {
       padding-right: 1rem;

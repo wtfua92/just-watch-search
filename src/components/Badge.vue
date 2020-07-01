@@ -1,5 +1,5 @@
 <template>
-  <span class="badge" :title="title">{{ content }}</span>
+  <span class="badge" :title="title" v-html="content" />
 </template>
 
 <script>

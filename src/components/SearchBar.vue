@@ -43,16 +43,18 @@ export default Vue.extend({
         this.touched = true;
       }
 
-      !this.isLoading && !this.titleNameEmpty && this.setLoading(true);
-
       return debounce(
         (): void => {
           window.scrollTo({
             top: 0
           });
 
+          !this.isLoading && !this.titleNameEmpty && this.setLoading(true);
+
           if (!this.titleNameEmpty) {
             this.setSearchResult(this.titleName);
+          } else {
+            this.setLoading(false);
           }
         },
         750,

@@ -1,0 +1,7 @@
+{
+  "baseUrl": "http://localhost:8080",
+  "watchForFileChanges": true,
+  "integrationFolder": "tests/integration",
+  "screenshotsFolder": "tests/integration/screenshots",
+  "testFiles": "**/*_spec.*"
+}

@@ -14,7 +14,8 @@
     "types": [
       "webpack-env",
       "jest",
-      "testing-library__jest-dom"
+      "testing-library__jest-dom",
+      "cypress"
     ],
     "paths": {
       "@/*": [

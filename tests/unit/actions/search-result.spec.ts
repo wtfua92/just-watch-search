@@ -57,7 +57,7 @@ describe("SearchResultActions", () => {
       );
     });
 
-    it("should change loading to false", async () => {
+    it("should change loading to false", () => {
       context.state.loading = true;
 
       fireSetSearchResult();

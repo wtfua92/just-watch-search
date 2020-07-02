@@ -97,10 +97,14 @@ export default Vue.extend({
 
   &__details {
     height: 30%;
-    width: 70%;
+    width: 100%;
     background-color: $dark-100;
     padding: 1rem;
     border-radius: 0.5rem 0.5rem 1rem 1rem;
+
+    @include screen-md {
+      width: 70%;
+    }
 
     @include screen-md {
       background-color: transparent;

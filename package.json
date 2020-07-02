@@ -5,8 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "cypress open",
+    "test:unit": "vue-cli-service test:unit --coverage",
+    "test:integration": "cypress open",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
